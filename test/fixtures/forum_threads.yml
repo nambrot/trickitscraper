@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  last_page_scraped: 1
+  link: MyString
+  name: MyString
+
+two:
+  last_page_scraped: 1
+  link: MyString
+  name: MyString

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Last page scraped:</strong>
+  <%= @forum_thread.last_page_scraped %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @forum_thread.link %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @forum_thread.name %>
+</p>
+
+<%= link_to 'Edit', edit_forum_thread_path(@forum_thread) %> |
+<%= link_to 'Back', forum_threads_path %>
