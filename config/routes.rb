@@ -2,7 +2,7 @@ Trickitscrape::Application.routes.draw do
   resources :forum_threads
 
   resources :posts
-
+  root :to => "posts#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
