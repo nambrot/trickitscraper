@@ -1,4 +1,5 @@
 Trickitscrape::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :forum_threads
 
   resources :posts
