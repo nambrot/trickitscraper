@@ -1,6 +1,6 @@
 class ForumThread < ActiveRecord::Base
   has_many :posts
-
+  scope :to_scrape, -> { where(to_scrape: true)}
   def scrape
     posts_hash = extract_posts_from_page(self.last_page_scraped)
     
