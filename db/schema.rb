@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324230521) do
+ActiveRecord::Schema.define(version: 20140325000037) do
 
   create_table "forum_threads", force: true do |t|
     t.integer  "last_page_scraped"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20140324230521) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "to_scrape",         default: false
+    t.boolean  "to_page_track",     default: false
+    t.text     "page_counts",       default: "--- []\n"
   end
 
   create_table "posts", force: true do |t|

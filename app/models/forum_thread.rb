@@ -1,6 +1,9 @@
 class ForumThread < ActiveRecord::Base
   has_many :posts
   scope :to_scrape, -> { where(to_scrape: true)}
+  scope :to_page_track, -> { where(to_page_track: true)}
+  serialize :page_counts, Array
+
   def scrape
     posts_hash = extract_posts_from_page(self.last_page_scraped)
     
@@ -33,4 +36,26 @@ class ForumThread < ActiveRecord::Base
       }
     end
   end
+
+  def self.get_new_forum_threads
+    feeds = ["http://www.flyertalk.com/forum/external.php?type=RSS2&forumids=372", "http://www.flyertalk.com/forum/external.php?type=rss2&forumids=627"]
+    for feed in feeds
+      new_threads = Nokogiri::XML.parse(HTTParty.get(feed).body).xpath('//item')
+      for thread in new_threads
+        ForumThread.create name: thread.xpath('title').first.text, link: thread.xpath('link').first.text, to_page_track: true
+      end
+    end
+  end
+
+  def log_page_count
+    vb_controls = Nokogiri::HTML.parse(HTTParty.get(self.link).body).css('.pagenav .vbmenu_control')
+    if vb_controls.length == 0
+      self.page_counts << 1
+    else
+      self.page_counts << vb_controls.first.text.split(' ').last.to_i
+    end
+    self.save
+
+  end
+
 end
