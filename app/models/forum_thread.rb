@@ -4,6 +4,7 @@ class ForumThread < ActiveRecord::Base
   scope :to_page_tracked, -> { where(to_page_track: true, marked_as_fast_growing_at: nil)}
   scope :fast_growing, -> { where('marked_as_fast_growing_at IS NOT NULL').order(marked_as_fast_growing_at: :desc)}
   serialize :page_counts, Array
+  validates :link, uniqueness: true
   MAX_PAGE_TRACK_OBSERVATIONS = 1500
   GROWTH_THRESHOLDS = [[2, 5], [3, 10], [4, 24], [5, 100]] # for [x, y], we define its fast growing if it jumps x pages in 5*y minutes
   
