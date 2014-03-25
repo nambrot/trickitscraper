@@ -1,0 +1,43 @@
+<div class="row">
+  <h1 class="subheader">
+    Nam's Flight Hacking Tools
+  </h1>
+  
+  <div class="large-6 columns">
+    <h3 class="subheader">
+      Potential Great Fares
+    </h3>
+    <% if !@fast_growing_threads.blank? %>
+      <ul>
+        <% for thread in @fast_growing_threads %>
+          <li><%= link_to thread.name, thread.link %></li>
+        <% end %>
+      </ul>
+      
+    <% else %>
+      
+    <% end %>
+  </div>
+  <div class="large-6 columns">
+    <h3 class="subheader">
+      Last Posts on <a href="http://www.flyertalk.com/forum/mileage-run-discussion/930922-trick-negotiate-special-savings-lounge-thread.html">Trick It!</a>
+    </h3>
+    <p>See all posts <%= link_to "here", posts_path %></p>
+    <% if !Post.limit(25).blank? %>
+      <table>
+        <tbody>
+          <% for post in Post.limit(25) %>
+            <tr>
+              <td>
+                <%= post.body %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+    <% else %>
+      
+    <% end %>
+  </div>
+</div>
