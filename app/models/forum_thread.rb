@@ -1,4 +1,5 @@
 class ForumThread < ActiveRecord::Base
+  extend InterestingChecker
   has_many :posts
   scope :to_scrape, -> { where(to_scrape: true)}
   scope :to_page_tracked, -> { where(to_page_track: true, marked_as_fast_growing_at: nil)}
@@ -46,10 +47,15 @@ class ForumThread < ActiveRecord::Base
     for feed in feeds
       new_threads = Nokogiri::XML.parse(HTTParty.get(feed).body).xpath('//item')
       for thread in new_threads
-        ForumThread.create name: thread.xpath('title').first.text, link: thread.xpath('link').first.text, to_page_track: true
+        record = ForumThread.create name: thread.xpath('title').first.text, link: thread.xpath('link').first.text, to_page_track: true
+        if ForumThread.is_interesting?(thread.xpath('title').first.text) or ForumThread.is_interesting?(thread.xpath('description').first.text)
+          record.marked_as_fast_growing_at = Time.now
+          record.save
+        end
       end
     end
   end
+
 
   def log_page_count
     # delete if thread is too old
