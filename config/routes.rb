@@ -1,7 +1,8 @@
 Trickitscrape::Application.routes.draw do
+  get "links/log"
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :forum_threads
-
+  post '/api/log/link' => "links#log"
   resources :posts
   root :to => "pages#index"
   # The priority is based upon order of creation: first created -> highest priority.

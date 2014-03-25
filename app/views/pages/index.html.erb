@@ -17,6 +17,16 @@
     <% else %>
       
     <% end %>
+    <% if !@links.blank? %>
+      <ul>
+        <% for link in @links %>
+          <li><%= link_to link.title, link.link %></li>
+        <% end %>
+      </ul>
+
+    <% else %>
+      
+    <% end %>
   </div>
   <div class="large-6 columns">
     <h3 class="subheader">
