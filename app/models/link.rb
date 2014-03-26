@@ -3,4 +3,7 @@ class Link < ActiveRecord::Base
   def is_interesting?
     Link.is_interesting?(self.title)
   end
+  def interesting_date
+    created_at
+  end
 end

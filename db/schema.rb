@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140325193600) do
+ActiveRecord::Schema.define(version: 20140326221032) do
 
   create_table "forum_threads", force: true do |t|
     t.integer  "last_page_scraped"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140325193600) do
   end
 
   create_table "links", force: true do |t|
-    t.string   "title"
+    t.string   "name"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"

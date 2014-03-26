@@ -25,6 +25,8 @@ gem 'foreman'
 gem 'unicorn'
 gem 'rails_admin'
 gem 'httparty'
+gem 'ar-find-in-batches-with-order', github: 'nambrot/ar-find-in-batches-with-order', branch: :master
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

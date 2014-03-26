@@ -7,23 +7,10 @@
     <h3 class="subheader">
       Potential Great Fares
     </h3>
-    <% if !@fast_growing_threads.blank? %>
-      <ul>
-        <% for thread in @fast_growing_threads %>
-          <li><%= link_to thread.name, thread.link %></li>
-        <% end %>
-      </ul>
-      
-    <% else %>
-      
-    <% end %>
-    <% if !@links.blank? %>
-      <ul>
-        <% for link in @links %>
-          <li><%= link_to link.title, link.link %></li>
-        <% end %>
-      </ul>
-
+    <% if !@interesting_stuff.blank? %>
+      <% for stuff in @interesting_stuff %>
+        <li><%= link_to stuff.name, stuff.link %></li>
+      <% end %>
     <% else %>
       
     <% end %>

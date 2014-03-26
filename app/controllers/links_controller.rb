@@ -4,7 +4,7 @@ class LinksController < ApplicationController
     par = request.body.read
     title = par.split("::::").first
     link = par.split("::::").last
-    link = Link.new title: title, link: link
+    link = Link.new name: title, link: link
     link.save if link.is_interesting?
     render text: (link.persisted? ? "Interesting" : "Not Interesting")
   end

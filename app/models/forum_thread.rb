@@ -9,6 +9,10 @@ class ForumThread < ActiveRecord::Base
   MAX_PAGE_TRACK_OBSERVATIONS = 1500
   GROWTH_THRESHOLDS = [[2, 5], [3, 10], [4, 24], [5, 100]] # for [x, y], we define its fast growing if it jumps x pages in 5*y minutes
   
+  def interesting_date
+    marked_as_fast_growing_at
+  end
+  
   def scrape
     posts_hash = extract_posts_from_page(self.last_page_scraped)
     

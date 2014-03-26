@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/nambrot/ar-find-in-batches-with-order.git
+  revision: 92e2ad9e1f31802f0e2ac46b9ce8178aa23d0c2e
+  branch: master
+  specs:
+    ar-find-in-batches-with-order (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -178,6 +185,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ar-find-in-batches-with-order!
   awesome_print
   better_errors
   binding_of_caller
