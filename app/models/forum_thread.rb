@@ -52,7 +52,7 @@ class ForumThread < ActiveRecord::Base
       new_threads = Nokogiri::XML.parse(HTTParty.get(feed).body).xpath('//item')
       for thread in new_threads
         record = ForumThread.create name: thread.xpath('title').first.text, link: thread.xpath('link').first.text, to_page_track: true
-        if ForumThread.is_interesting?(thread.xpath('title').first.text) or ForumThread.is_interesting?(thread.xpath('description').first.text)
+        if record.persisted? and (ForumThread.is_interesting?(thread.xpath('title').first.text) or ForumThread.is_interesting?(thread.xpath('description').first.text))
           record.marked_as_fast_growing_at = Time.now
           record.save
         end
