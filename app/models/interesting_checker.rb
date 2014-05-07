@@ -5,7 +5,7 @@ module InterestingChecker
     (match ? true : false)
   end
   def is_crazy_good?(string)
-    is_matching_some_regex string, /Crazy|crazy|Knaller|Amazing|amazing|!{2,}/
+    is_matching_some_regex string, /Crazy|crazy|Knaller|Amazing|amazing|Super|super|!{2,}/
   end
 
   def is_potential_error_fare?(string)
