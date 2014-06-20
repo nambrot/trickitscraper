@@ -5,6 +5,7 @@ Trickitscrape::Application.routes.draw do
   post '/api/log/link' => "links#log"
   resources :posts
   get 'feed' => "pages#notification_feed"
+  get 'ft_feed' => "pages#flyertalk_feed"
   root :to => "pages#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
